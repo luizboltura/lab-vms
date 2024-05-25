@@ -7,6 +7,10 @@ Vagrant.configure("2") do |config|
   config.vm.define "control-node" do |control_node|
     control_node.vm.box = "ubuntu/bionic64" # Substitua pela box desejada
     control_node.vm.network "private_network", ip: "192.168.56.10"
+
+     # Provisionamento usando o script shell externo
+     control_node.vm.provision "shell", path: "install_ansible.sh"
+    
   end
 
   # Configuração da máquina virtual "app-01"
